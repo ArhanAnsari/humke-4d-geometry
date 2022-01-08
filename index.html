@@ -4,7 +4,7 @@
 	<title>4D Geometry Viewer</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="src/css/index.css">
-	<!-- For making POST requests --> 
+	<!-- For making POST requests -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<!-- For parsing mathematical expressions. Used by the gui -->
 	<script src="src/lib/parser.js"></script>
@@ -30,7 +30,7 @@
 	<!-- Nick Nooney's Polygonize, used in the modes to convert an equation to a set of points/faces -->
 	<script src="src/util/polygonize.js"></script>
 	<!-- Our common gui interface & utilities -->
-	<script src="src/util/gui.js"></script>
+	<script src="src/util/gui.js?i=1"></script>
 	<script src="src/util/grid.js"></script>
 	<script src="src/util/util.js"></script>
 	<script src="src/util/QuickHull4D.js"></script>
@@ -109,9 +109,9 @@
 				<a target="_blank" href="https://threejs.org">three.js</a>,
 				<a target="_blank" href="https://github.com/silentmatt/expr-eval">expr-eval</a>,
 				<a target="_blank" href="https://github.com/mapbox/earcut">Earcut</a>,
-				<a target="_blank" href="https://github.com/dataarts/dat.gui">dat.GUI</a> and 
+				<a target="_blank" href="https://github.com/dataarts/dat.gui">dat.GUI</a> and
 				<a target="_blank" href="https://github.com/weshoke/versor.js/">versor.js</a>
-				
+
 			</li>
 		</ol>
 	</div>
@@ -151,7 +151,7 @@
 </script>
 
 <script>
-	// Create a global copy of util for keyboard listening 
+	// Create a global copy of util for keyboard listening
 	window.Keyboard = new Util();
 	window.Keyboard.SetupKeyListeners();
 	// Listen for clicks on any of the mode buttons to:
@@ -194,8 +194,8 @@
 		mode_objects[current_mode].cleanup();
 	}
 
-	//Initialize the versor library 
-	if(window.E4 == null){ 
+	//Initialize the versor library
+	if(window.E4 == null){
 		window.E4 = versor.create({
 			metric:[1, 1, 1, 1],
 			types: [

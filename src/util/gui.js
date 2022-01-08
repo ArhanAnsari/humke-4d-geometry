@@ -4,8 +4,8 @@
 var GUI = (function (scope) {
 	//Constructor
 	function GUI(){
-		// This is where all built in examples go. It is an array of objects 
-		// specifying which dimension and input mode they belong to, as well as the data needed to set their state 
+		// This is where all built in examples go. It is an array of objects
+		// specifying which dimension and input mode they belong to, as well as the data needed to set their state
 		this.built_in_examples_data = [
 			// 2D examples
 			{   name: 'Filled in Circle', dimension: 2, input: 'cartesian',
@@ -29,7 +29,7 @@ var GUI = (function (scope) {
 			{ 	name: 'Approx. Circle', dimension: 2, input: 'convex-hull',
 			  	data: {'points': '(5.00,0.00),(4.90,0.99),(4.61,1.95),(4.13,2.82),(3.48,3.59),(2.70,4.21),(1.81,4.66),(0.85,4.93),(-0.15,5.00),(-1.14,4.87),(-2.08,4.55),(-2.94,4.04),(-3.69,3.38),(-4.28,2.58),(-4.71,1.67),(-4.95,0.71),(-4.99,-0.29),(-4.83,-1.28),(-4.48,-2.21),(-3.95,-3.06),(-3.27,-3.78),(-2.45,-4.36),(-1.54,-4.76),(-0.56,-4.97),(0.44,-4.98),(1.42,-4.79),(2.34,-4.42),(3.17,-3.86),(3.88,-3.16),(4.43,-2.32),(4.80,-1.40),(4.98,-0.42)'
 			  	}},
-			// 3D examples 
+			// 3D examples
 			{   name: 'Sphere', dimension: 3, input: 'cartesian',
 				data: { 'equation': 'x^2 + y^2 + z^2 = 10' } },
 			{   name: 'Tube', dimension: 3, input: 'cartesian',
@@ -66,6 +66,9 @@ var GUI = (function (scope) {
 			{
 				name: 'Clean Tesseract', dimension: 4, input: 'convex-hull',
 				data: { 'points': 'untessellated_tesseract' }},
+			{
+				name: 'Crystal', dimension: 4, input: 'convex-hull',
+				data: { 'points': '(-1,-1,-1,0),(-1,-1,1,0),(-1,1,-1,0),(-1,1,1,0),(1,-1,-1,0),(1,-1,1,0),(1,1,-1,0),(1,1,1,0),(0,-1.5,-0.75,0),(0,-1.5,0.75,0),(0,1.5,-0.75,0),(0,1.5,0.75,0),(-1.5,-0.75,0,0),(-1.5,0.75,0,0),(1.5,-0.75,0,0),(1.5,0.75,0,0),(-0.75,0,-1.5,0),(-0.75,0,1.5,0),(0.75,0,-1.5,0),(0.75,0,1.5,0),(-1,-1,-1,4),(-1,-1,1,4),(-1,1,-1,4),(-1,1,1,4),(1,-1,-1,4),(1,-1,1,4),(1,1,-1,4),(1,1,1,4),(0,-1.5,-0.75,4),(0,-1.5,0.75,4),(0,1.5,-0.75,4),(0,1.5,0.75,4),(-1.5,-0.75,0,4),(-1.5,0.75,0,4),(1.5,-0.75,0,4),(1.5,0.75,0,4),(-0.75,0,-1.5,4),(-0.75,0,1.5,4),(0.75,0,-1.5,4),(0.75,0,1.5,4),(0,0,0,6)' }},
 			{
 				name: 'Large Tesseract', dimension: 4, input: 'convex-hull',
 				data: { 'points': '(-9,-9,-9,-9),(9,-9,-9,-9),(-9,9,-9,-9),(9,9,-9,-9),(-9,-9,9,-9),(9,-9,9,-9),(-9,9,9,-9),(9,9,9,-9),(-9,-9,-9,9),(9,-9,-9,9),(-9,9,-9,9),(9,9,-9,9),(-9,-9,9,9),(9,-9,9,9),(-9,9,9,9),(9,9,9,9)' }},
@@ -212,11 +215,11 @@ var GUI = (function (scope) {
 			if(callbacks['source']) callbacks['source'](mode_obj,val);
 		});
 
-		
+
 		// Init cartesian by default
 		this.initCartesianSource();
 
-		
+
 
 		// Now the viewing controls
 		var axis_value_control = this.viewingControls.add(params, 'axis_value').min(-10).max(10).step(0.01).listen();
@@ -251,7 +254,7 @@ var GUI = (function (scope) {
 
 
 
-		// Turn all sliders orange 
+		// Turn all sliders orange
 		var sliders = document.querySelectorAll(".slider-fg")
 		for(var i=0;i<sliders.length;i++){
 			var slider = sliders[i]
@@ -286,7 +289,7 @@ var GUI = (function (scope) {
 			arr.push(res);
 		}
 
-		
+
 
 
 		this.builtin_arr_cartesian = this.constructExampleItems(this.mode,'cartesian');
@@ -405,9 +408,9 @@ var GUI = (function (scope) {
 	};
 
 	GUI.prototype.constructExampleItems = function(mode,input){
-		/* 
+		/*
 			Given a mode (ex '2D') and input (ex 'parametric')
-			it will construct the gui items, add them to builtinExamples and 
+			it will construct the gui items, add them to builtinExamples and
 			return the array of those items so you can destroy them later
 		*/
 		var dimension = 2;
@@ -423,7 +426,7 @@ var GUI = (function (scope) {
 		for(var i=0;i<this.built_in_examples_data.length;i++){
 			var datum = this.built_in_examples_data[i];
 			if(datum.dimension == dimension && datum.input == input){
-				// Construct a function that will set all the datum's data when called 
+				// Construct a function that will set all the datum's data when called
 				this.params[datum.name] = (function(capturedDatum){
 					// We need to create a closure to capture the value of the current datum, otherwise the scopes will be change by the time this funciton is called
 					var d = capturedDatum;
